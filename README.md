@@ -22,5 +22,5 @@ Flix is an app that allows users to browse movies from the [The Movie Database A
 <img src="http://g.recordit.co/T52FW2NtCm.gif" width=250><br>
 
 ### Notes
-The poster image didn't appear at first. I was able to fixed it by using "https" instead of "http" for the 
-base url
+The poster images didn't appear at first. I was able to fix it by using "https" instead of "http" for the 
+base url.
