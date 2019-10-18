@@ -60,6 +60,7 @@
                                                 <constraint firstItem="5z4-Ad-NdX" firstAttribute="bottom" secondItem="a76-AR-tKe" secondAttribute="bottom" id="yeD-sq-Ta5"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="posterView" destination="5z4-Ad-NdX" id="A92-k1-EU0"/>
                                             <outlet property="synopsisLabel" destination="a76-AR-tKe" id="WWZ-Bv-bcU"/>
