@@ -19,7 +19,9 @@ Flix is an app that allows users to browse movies from the [The Movie Database A
 
 
 ### Notes
-Describe any challenges encountered while building the app.
+The app was successfully built but when tapped to the next screen it crashed and threw  “Unexpected found nil…” error. It was resolved by correcting the outlet to the correct place.
+
+Image showed up much smaller than expected on Superheros screen, but resolved it by setting the "Collection View Flow Layout" estimate size to none.
 
 ## Flix Part 1
 
