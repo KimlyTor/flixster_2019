@@ -16,7 +16,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var tableView: UITableView!
     
     var movies = [[String: Any]] ()  // creation of an array of a dicitonary
-    //MARK: -print to the console
+    //MARK: -Network call
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +36,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
            } else if let data = data {
               let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
             
-              self.movies = dataDictionary["results"]as! [[String: Any]] // download from api and store it in movies which is an array of dictionary
-             
-              // TODO: Get the array of movies
-              // TODO: Store the movies in a property to use elsewhere
-              // TODO: Reload your table view data
+              self.movies = dataDictionary["results"]as! [[String: Any]] // download from api and                                                           //store it in movies which                                                         //is an array of dictionary
               self.tableView.reloadData() //need this call to reload the table view
                                           //functions mutiple time with update data
               print(dataDictionary) //print the api on the console
@@ -65,11 +61,14 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
            
         
            //cell.textLabel!.text = title //plain text title, swift optional ! or ? 
-            cell.titleLabel.text = title  //in the story board , the title will go into                                  //titleLabel
+            cell.titleLabel.text = title  //in the story board , the title will go into titleLabel
+        
             let synopsis = movie["overview"] as! String //store the overview dictionary
             cell.synopsisLabel.text = synopsis //display it in the synopsisLabel on the
                                                //screen, configure how many lines you need on
                                               // the story board
+        
+        
             let baseUrl = "https://image.tmdb.org/t/p/w185"
             let posterPath = movie["poster_path"] as! String
             let posterUrl = URL(string: baseUrl + posterPath) //create URL to pull the
@@ -84,6 +83,24 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             cell.posterView.af_setImage(withURL: posterUrl!)
            
             return cell // return the items of the row
+    }
+    //MARK: -part2 features
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+            
+        print("Loading up the details screen")//checking if the segue way work, message
+                                              //print when tap to the next screen
+        
+        //Find the selected movie
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPath(for: cell)!
+        let movie = movies[indexPath.row]
+        
+        //Pass the selected movie to the detail view controller
+        let detailsViewController = segue.destination as! MovieDetailsViewController
+        detailsViewController.movie = movie
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
     }
 
 
